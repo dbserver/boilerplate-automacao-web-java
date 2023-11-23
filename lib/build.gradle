@@ -28,8 +28,8 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
     
     // Use WebDriverManager for browser simplified management
-	implementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
     
-	// Use Selenium for web browser automations
-	implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
+    // Use Selenium for web browser automations
+    implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
 }
