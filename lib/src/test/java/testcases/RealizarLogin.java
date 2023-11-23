@@ -27,7 +27,7 @@ public class RealizarLogin extends TestBase {
     @Test
     public void realizarLoginBemSucedido() {
         try {
-            ReportBuilder.criar("Realizar login com sucesso");
+            ReportBuilder.criar("login-sucesso", "Realizar login com sucesso");
 
             Properties contasProps = FileOperations.getProperties("contas_config");
             String usuario = contasProps.getProperty("conta1_usuario");
@@ -37,9 +37,9 @@ public class RealizarLogin extends TestBase {
 
             this.loginTask.efetuarLoginBemSucedido(usuario, senha);
 
-            ReportBuilder.addRegistro(TipoRegistro.SUCESSO, "");
+            ReportBuilder.addRegistro(TipoRegistro.SUCESSO, "Login realizado com sucesso");
         } catch (AssertionFailedError e) {
-            ReportBuilder.addRegistro(TipoRegistro.FALHA, "");
+            ReportBuilder.addRegistro(TipoRegistro.FALHA, "Login falhou: " + e.getMessage());
 
             throw e;
         }
@@ -48,19 +48,19 @@ public class RealizarLogin extends TestBase {
     @Test
     public void realizarLoginMalSucedido() {
         try {
-            ReportBuilder.criar("Não conseguir realizar login");
+            ReportBuilder.criar("login-insucesso", "Impedir realização de login com credenciais inválidas");
 
             Properties contasProps = FileOperations.getProperties("contas_config");
             String usuario = contasProps.getProperty("conta3_usuario");
             String senha = contasProps.getProperty("conta3_senha");
 
-            ReportBuilder.addStep("Executando tentativa de acesso com as credenciais");
+            ReportBuilder.addStep("Executando tentativa de acesso com as credenciais inválidas");
 
-            this.loginTask.efetuarLoginMalSucedido(usuario, senha);
+            this.loginTask.impedirLoginCredenciaisInvalidas(usuario, senha);
 
-            ReportBuilder.addRegistro(TipoRegistro.SUCESSO, "");
+            ReportBuilder.addRegistro(TipoRegistro.SUCESSO, "Login impedido com credenciais inválidas");
         } catch (AssertionFailedError e) {
-            ReportBuilder.addRegistro(TipoRegistro.FALHA, "");
+            ReportBuilder.addRegistro(TipoRegistro.FALHA, "Impedimento de login falhou: " + e.getMessage());
 
             throw e;
         }

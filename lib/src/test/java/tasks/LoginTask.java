@@ -20,7 +20,7 @@ public class LoginTask {
         this.loginPage.getAlertFeedbackLogin().accept();
     }
 
-    public void efetuarLoginMalSucedido(String usuario, String senha) {
+    public void impedirLoginCredenciaisInvalidas(String usuario, String senha) {
         this.efetuarLogin(usuario, senha);
 
         this.loginValidation.isLoginMalSucedido();
