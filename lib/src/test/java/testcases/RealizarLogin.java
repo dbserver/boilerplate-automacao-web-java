@@ -14,32 +14,30 @@ import tasks.LoginTask;
 import validations.LoginValidation;
 
 public class RealizarLogin extends TestBase {
+    private LoginPage loginPage;
     private LoginTask loginTask;
 
     public RealizarLogin() {
-        LoginPage loginPage = new LoginPage(this.obterDriver());
+        this.loginPage = new LoginPage(this.obterDriver());
 
-        LoginValidation loginValidation = new LoginValidation(loginPage);
-
-        this.loginTask = new LoginTask(loginPage, loginValidation);
+        this.loginTask = new LoginTask(this.loginPage, new LoginValidation(this.loginPage));
     }
 
     @Test
     public void realizarLoginBemSucedido() {
         try {
-            ReportBuilder.criar("login-sucesso", "Realizar login com sucesso");
+            ReportBuilder.criar("Login-sucesso", "Realizar login bem sucedido com credenciais válidas");
 
             Properties contasProps = FileOperations.getProperties("contas_config");
             String usuario = contasProps.getProperty("conta1_usuario");
             String senha = contasProps.getProperty("conta1_senha");
 
-            ReportBuilder.addStep("Executando tentativa de acesso com as credenciais");
-
             this.loginTask.efetuarLoginBemSucedido(usuario, senha);
-
-            ReportBuilder.addRegistro(TipoRegistro.SUCESSO, "Login realizado com sucesso");
         } catch (AssertionFailedError e) {
-            ReportBuilder.addRegistro(TipoRegistro.FALHA, "Login falhou: " + e.getMessage());
+            ReportBuilder.addRegistro(
+                    TipoRegistro.FALHA,
+                    String.format("Login falhou: %s", e.getMessage()),
+                    this.loginPage.obterScreenshot());
 
             throw e;
         }
@@ -48,19 +46,18 @@ public class RealizarLogin extends TestBase {
     @Test
     public void realizarLoginMalSucedido() {
         try {
-            ReportBuilder.criar("login-insucesso", "Impedir realização de login com credenciais inválidas");
+            ReportBuilder.criar("Login-insucesso", "Impedir realização de login com credenciais inválidas");
 
             Properties contasProps = FileOperations.getProperties("contas_config");
             String usuario = contasProps.getProperty("conta3_usuario");
             String senha = contasProps.getProperty("conta3_senha");
 
-            ReportBuilder.addStep("Executando tentativa de acesso com as credenciais inválidas");
-
             this.loginTask.impedirLoginCredenciaisInvalidas(usuario, senha);
-
-            ReportBuilder.addRegistro(TipoRegistro.SUCESSO, "Login impedido com credenciais inválidas");
         } catch (AssertionFailedError e) {
-            ReportBuilder.addRegistro(TipoRegistro.FALHA, "Impedimento de login falhou: " + e.getMessage());
+            ReportBuilder.addRegistro(
+                    TipoRegistro.FALHA,
+                    String.format("Impedimento de login falhou: %s", e.getMessage()),
+                    this.loginPage.obterScreenshot());
 
             throw e;
         }

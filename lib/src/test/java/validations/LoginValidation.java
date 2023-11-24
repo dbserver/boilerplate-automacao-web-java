@@ -2,6 +2,8 @@ package validations;
 
 import org.junit.jupiter.api.Assertions;
 
+import framework.utils.simplereportbuilder.ReportBuilder;
+import framework.utils.simplereportbuilder.TipoRegistro;
 import pageobjects.LoginPage;
 
 public class LoginValidation {
@@ -16,7 +18,10 @@ public class LoginValidation {
 
         Assertions.assertTrue(feedback.toLowerCase().contains("sucesso"));
 
-        // TODO: Report Test
+        ReportBuilder.addRegistro(
+                TipoRegistro.SUCESSO,
+                "Login realizado com sucesso",
+                this.loginPage.obterScreenshot());
     }
 
     public void isLoginMalSucedido() {
@@ -24,6 +29,9 @@ public class LoginValidation {
 
         Assertions.assertFalse(feedback.toLowerCase().contains("sucesso"));
 
-        // TODO: Report Test
+        ReportBuilder.addRegistro(
+                TipoRegistro.SUCESSO,
+                "Login com credenciais inválidas impedido com sucesso",
+                this.loginPage.obterScreenshot());
     }
 }

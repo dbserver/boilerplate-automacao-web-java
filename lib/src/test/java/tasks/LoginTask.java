@@ -1,5 +1,6 @@
 package tasks;
 
+import framework.utils.simplereportbuilder.ReportBuilder;
 import pageobjects.LoginPage;
 import validations.LoginValidation;
 
@@ -13,6 +14,8 @@ public class LoginTask {
     }
 
     public void efetuarLoginBemSucedido(String usuario, String senha) {
+        ReportBuilder.addStep("Executando tentativa de acesso com credenciais válidas");
+
         this.efetuarLogin(usuario, senha);
 
         this.loginValidation.isLoginBemSucedido();
@@ -21,6 +24,8 @@ public class LoginTask {
     }
 
     public void impedirLoginCredenciaisInvalidas(String usuario, String senha) {
+        ReportBuilder.addStep("Executando tentativa de acesso com credenciais inválidas");
+
         this.efetuarLogin(usuario, senha);
 
         this.loginValidation.isLoginMalSucedido();
