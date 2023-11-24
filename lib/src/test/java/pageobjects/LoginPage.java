@@ -1,6 +1,5 @@
 package pageobjects;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,7 +23,11 @@ public class LoginPage extends PageBase {
         return this.obterDriver().findElement(By.xpath("//form[@id='login-form']//button"));
     }
 
-    public Alert getAlertFeedbackLogin() {
-        return this.obterDriver().switchTo().alert();
+    public WebElement getModalFeedback() {
+        return this.obterDriver().findElement(By.id("modal-text"));
+    }
+
+    public WebElement getModalFeedbackButtonFechar() {
+        return this.obterDriver().findElement(By.xpath("//div[@id='modal']//button"));
     }
 }

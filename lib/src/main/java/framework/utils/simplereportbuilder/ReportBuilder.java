@@ -43,7 +43,7 @@ public class ReportBuilder {
                 + File.separator + ReportBuilder.relatorio.getNome();
 
         FileOperations.criarPasta(ReportBuilder.DiretorioRelatorios);
-        
+
         FileOperations.criarPasta(diretorioRelatorio);
 
         String templateHtml = lerTemplateHtml(ReportBuilder.DiretorioTemplate);
@@ -63,24 +63,33 @@ public class ReportBuilder {
                     .append(String.format("<h2>%s</h2>%n", step.getDescricao()));
 
             for (Registro registro : step.getRegistros()) {
+                conteudoRelatorioHtml
+                        .append(String.format("<div class=\"record\">%n"));
+
                 String tipoRegistroClasse = registro.getTipo() == TipoRegistro.SUCESSO
                         ? "success"
                         : "fail";
 
+                String tipoRegistroCapitalizado = registro.getTipo().toString().substring(0, 1)
+                        .concat(registro.getTipo().toString().substring(1).toLowerCase());
+
                 conteudoRelatorioHtml
-                        .append(String.format("<div class=\"record\">%n"))
+                        .append(String.format("<div class=\"record-details\">%n"))
                         .append(String.format("<p>%s</p>%n", registro.getDescricao()))
-                        .append(String.format("<span class='status %s'>%s</span>%n",
+                        .append(String.format("<span class='status label %s'>%s</span>%n",
                                 tipoRegistroClasse,
-                                registro.getTipo().toString()));
+                                tipoRegistroCapitalizado))
+                        .append(String.format("</div>%n"));
 
                 if (registro.getArquivo() != null) {
                     String diretorioImagem = processarImagemRegistroRelatorioHtml(diretorioRelatorio, registro);
 
                     conteudoRelatorioHtml
+                    		.append(String.format("<a href=\"%s\" target=\"_blank\">%n", diretorioImagem))
                             .append(String.format("<img src=\"%s\" alt=\"%s\">%n",
                                     diretorioImagem,
-                                    String.format("Evidência de %s", registro.getTipo().toString().toLowerCase())));
+                                    String.format("Evidência de %s", registro.getTipo().toString().toLowerCase())))
+                            .append(String.format("</a>%n"));
                 }
 
                 conteudoRelatorioHtml.append(String.format("</div>%n"));
@@ -146,13 +155,13 @@ public class ReportBuilder {
         try (FileOutputStream stream = new FileOutputStream(diretorioImagem)) {
             stream.write(registro.getArquivo());
         } catch (IOException e) {
-        	System.out.printf(
+            System.out.printf(
                     "Ocorreu uma falha durante a criação da imagem %n",
                     ReportBuilder.relatorio.getNome());
 
             e.printStackTrace();
         }
-        
+
         return nomeArquivo;
     }
 

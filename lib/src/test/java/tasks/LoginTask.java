@@ -20,7 +20,7 @@ public class LoginTask {
 
         this.loginValidation.isLoginBemSucedido();
 
-        this.loginPage.getAlertFeedbackLogin().accept();
+        this.loginPage.getModalFeedbackButtonFechar().click();
     }
 
     public void impedirLoginCredenciaisInvalidas(String usuario, String senha) {
@@ -30,7 +30,7 @@ public class LoginTask {
 
         this.loginValidation.isLoginMalSucedido();
 
-        this.loginPage.getAlertFeedbackLogin().accept();
+        this.loginPage.getModalFeedbackButtonFechar().click();
     }
 
     private void efetuarLogin(String usuario, String senha) {

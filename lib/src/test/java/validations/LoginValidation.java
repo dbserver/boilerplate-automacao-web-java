@@ -14,7 +14,7 @@ public class LoginValidation {
     }
 
     public void isLoginBemSucedido() {
-        String feedback = this.loginPage.getAlertFeedbackLogin().getText();
+        String feedback = this.loginPage.getModalFeedback().getText();
 
         Assertions.assertTrue(feedback.toLowerCase().contains("sucesso"));
 
@@ -25,7 +25,7 @@ public class LoginValidation {
     }
 
     public void isLoginMalSucedido() {
-        String feedback = this.loginPage.getAlertFeedbackLogin().getText();
+    	String feedback = this.loginPage.getModalFeedback().getText();
 
         Assertions.assertFalse(feedback.toLowerCase().contains("sucesso"));
 
