@@ -10,9 +10,11 @@ public class FileOperations {
             + File.separator + "src"
             + File.separator + "main";
 
-    public static final String DiretorioMain = FileOperations.DiretorioBase + File.separator + "java";
+    public static final String DiretorioMain = FileOperations.DiretorioBase
+            + File.separator + "java";
 
-    public static final String DiretorioResources = FileOperations.DiretorioBase + File.separator + "resources";
+    public static final String DiretorioResources = FileOperations.DiretorioBase
+            + File.separator + "resources";
 
     public static Properties getProperties(String nomeArquivo) {
         Properties properties = new Properties();
@@ -30,5 +32,13 @@ public class FileOperations {
         }
 
         return properties;
+    }
+
+    public static void criarPasta(String nomeDiretorio) {
+        File diretorio = new File(nomeDiretorio);
+
+        if (!diretorio.exists()) {
+            diretorio.mkdir();
+        }
     }
 }

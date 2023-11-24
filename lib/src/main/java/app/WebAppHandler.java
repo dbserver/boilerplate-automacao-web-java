@@ -13,7 +13,8 @@ import com.sun.net.httpserver.HttpHandler;
 import framework.utils.FileOperations;
 
 public class WebAppHandler implements HttpHandler {
-    private static final String DiretorioResourcesApp = FileOperations.DiretorioResources + File.separator + "app";
+    private static final String DiretorioResourcesApp = FileOperations.DiretorioResources
+            + File.separator + "app";
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
