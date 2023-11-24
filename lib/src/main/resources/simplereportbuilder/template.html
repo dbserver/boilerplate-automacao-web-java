@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{title}</title>
-    <!-- <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" /> -->
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .report { width: 80%; margin: auto; }
+        .step { background-color: #f0f0f0; margin-bottom: 20px; padding: 10px; border-radius: 5px; }
+        .record { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .record img { max-width: 100px; max-height: 60px; }
+        .success { color: green; }
+        .fail { color: red; }
+    </style>
   </head>
-  <body>{body}</body>
+  <body>
+    <div class="report">
+      {report}
+    </div>
+  </body>
 </html>
