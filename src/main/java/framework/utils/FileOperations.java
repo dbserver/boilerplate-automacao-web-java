@@ -22,7 +22,7 @@ public class FileOperations {
         String diretorioArquivoProperties = FileOperations.DiretorioResources
                 + File.separator + "properties"
                 + File.separator + String.format("%s.properties", nomeArquivo);
-
+        System.out.println(diretorioArquivoProperties);
         try (FileReader leitor = new FileReader(diretorioArquivoProperties)) {
             properties.load(leitor);
         } catch (IOException e) {

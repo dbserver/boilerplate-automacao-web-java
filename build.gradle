@@ -33,3 +33,7 @@ dependencies {
     // Use Selenium for web browser automations
     implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
 }
+
+test {
+    useJUnitPlatform()
+}
