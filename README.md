@@ -2,7 +2,7 @@
 
 # Boilerplate Java para Automação de Testes de Aplicações Web
 
-O boilerplate Java para automação de testes de aplicações web contém um conjunto inicial de recursos que possibilitam um rápido e simplificado início de construção de testes automatizados utilizando a proposta "DB" do modelo [PageObject](https://martinfowler.com/bliki/PageObject.html)
+O boilerplate Java para automação de testes de aplicações web contém um conjunto inicial de recursos que possibilitam um rápido e simplificado início de construção de testes automatizados utilizando a proposta "DB" do modelo [PageObject](https://martinfowler.com/bliki/PageObject.html).
 
 ## Getting started
 
