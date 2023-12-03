@@ -9,7 +9,7 @@ O boilerplate Java para automação de testes de aplicações web contém um con
 ### Pré-requisitos
 
 - [Java SE Development Kit 11](https://www.oracle.com/br/java/technologies/downloads/#java11) ou superior
-- [Gradle](https://gradle.org/install)
+- [Gradle 6.8](https://docs.gradle.org/6.8/userguide/installation.html#installing_with_a_package_manager) ou superior (se superior, demanda atualização do Gradle Wrapper)
 
 ### Workspace
 
@@ -17,13 +17,44 @@ O workspace contém a seguinte estrutura:
 
 ```shell
 .
-├── TODO
+├── gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   ├── app
+    │   │   └── framework
+    │   └── resources
+    └── test
+        └── java
+            ├── pageobjects
+            ├── tasks
+            ├── testcases
+            └── validations
 ```
 
-- `TODO` - Definir estrutura do workspace
+- `gradle` - Local da distribuição Gradle em utilização no projeto (Gradle Wrapper)
+- `src` - Local dos arquivos de código fonte da codebase
+  - `main` - Local que centraliza a parte da codebase a ser executada em formato de aplicação convencional (Java ou outras)
+    - `java/app` - Local do web server que provê uma aplicação web de exemplo (cujos arquivos HTML, JavaScript e CSS estão em `src/main/resources/app`)
+    - `java/framework` - Local da parte base do framework para automação de testes
+    - `resources` - Local de arquivos utilitários (ex.: arquivos da aplicação web de exemplo, arquivos de dados, output padrão de relatórios de execução de testes)
+  - `test` - Local que centraliza a parte da codebase a ser executada em formato de testes (Java ou outras, via frameworks como por exemplo JUnit)
+    - `java/pageobjects` - Local complementar ao framework para automação de testes que possui as classes que representam as páginas da aplicação web alvo (ex.: aplicação provida pelo web server em `src/main/java/app`)
+    - `java/tasks` - Local complementar ao framework para automação de testes que possui as classes que representam as ações de alto nível a serem efetuadas nas páginas da aplicação web alvo via `pageobjects`
+    - `java/testcases` - Local complementar ao framework para automação de testes que possui as classes que representam os casos de teste de fato, através do uso em conjunto de `pageobjects`, `tasks` e `validations`
+    - `java/validations` - Local complementar ao framework para automação de testes que possui as classes que representam as "assertions" (verificações de resultados)
+
+> [!NOTE]
+> - As pastas intermediárias `java` contidas em `main` e `test` tem propósito de centralizar os arquivos Java. Essa convenção ajuda na organização do código e é flexível para suportar outras linguagens (Gradle suporta ambientes multi-linguagem). Se houvessem também arquivos em uma linguagem diferente, como por exemplo Kotlin, também poderia haver uma pasta correspondente (ex.: `kotlin`)
 
 ### Executando o projeto
 
 #### 1. Via terminal de comandos
 
 TODO
+
+1 - gradle --refresh-dependencies
+
+2 - ./gradlew app
+
+3 - ./gradlew test

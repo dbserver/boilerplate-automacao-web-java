@@ -12,7 +12,7 @@ import com.sun.net.httpserver.HttpHandler;
 
 import framework.utils.FileOperations;
 
-public class WebAppHandler implements HttpHandler {
+public class WebServerHandler implements HttpHandler {
     private static final String DiretorioResourcesApp = FileOperations.DiretorioResources
             + File.separator + "app";
 

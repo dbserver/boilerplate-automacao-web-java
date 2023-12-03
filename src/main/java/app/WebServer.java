@@ -7,24 +7,24 @@ import com.sun.net.httpserver.HttpServer;
 
 import framework.utils.FileOperations;
 
-public class WebApp {
+public class WebServer {
     public static final int Porta = Integer.parseInt(
             FileOperations.getProperties("website_config").getProperty("porta"));
 
     public static void main(String[] args) {
         try {
 
-            HttpServer servidor = HttpServer.create(new InetSocketAddress(WebApp.Porta), 0);
+            HttpServer servidor = HttpServer.create(new InetSocketAddress(WebServer.Porta), 0);
 
-            servidor.createContext("/", new WebAppHandler());
+            servidor.createContext("/", new WebServerHandler());
 
             servidor.setExecutor(null);
 
-            System.out.printf("Servidor web inicializado na porta %d%n", WebApp.Porta);
+            System.out.printf("Servidor web inicializado na porta %d%n", WebServer.Porta);
 
             servidor.start();
         } catch (IOException e) {
-            System.out.printf("Ocorreu uma falha no servidor web na porta %d%n", WebApp.Porta);
+            System.out.printf("Ocorreu uma falha no servidor web na porta %d%n", WebServer.Porta);
 
             e.printStackTrace();
         }
