@@ -5,22 +5,20 @@ import java.util.Properties;
 import org.junit.jupiter.api.Test;
 import org.opentest4j.AssertionFailedError;
 
+import framework.browser.DriverManager;
 import framework.TestBase;
 import framework.utils.FileOperations;
 import framework.utils.simplereportbuilder.ReportBuilder;
 import framework.utils.simplereportbuilder.TipoRegistro;
-import pageobjects.LoginPage;
+
 import tasks.LoginTask;
-import validations.LoginValidation;
 
-public class RealizarLogin extends TestBase {
-    private LoginPage loginPage;
-    private LoginTask loginTask;
 
-    public RealizarLogin() {
-        this.loginPage = new LoginPage(this.obterDriver());
+public class RealizarLoginTestCase extends TestBase {
+    private final LoginTask loginTask;
 
-        this.loginTask = new LoginTask(this.loginPage, new LoginValidation(this.loginPage));
+    public RealizarLoginTestCase() {
+        this.loginTask = new LoginTask();
     }
 
     @Test
@@ -37,7 +35,7 @@ public class RealizarLogin extends TestBase {
             ReportBuilder.addRegistro(
                     TipoRegistro.FALHA,
                     String.format("Login falhou: %s", e.getMessage()),
-                    this.loginPage.obterScreenshot());
+                    DriverManager.obterScreenShot());
 
             throw e;
         }
@@ -57,7 +55,7 @@ public class RealizarLogin extends TestBase {
             ReportBuilder.addRegistro(
                     TipoRegistro.FALHA,
                     String.format("Impedimento de login falhou: %s", e.getMessage()),
-                    this.loginPage.obterScreenshot());
+                    DriverManager.obterScreenShot());
 
             throw e;
         }

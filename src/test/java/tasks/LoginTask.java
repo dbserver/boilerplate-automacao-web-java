@@ -5,12 +5,12 @@ import pageobjects.LoginPage;
 import validations.LoginValidation;
 
 public class LoginTask {
-    private LoginPage loginPage;
-    private LoginValidation loginValidation;
+    private final LoginPage loginPage;
+    private final LoginValidation loginValidation;
 
-    public LoginTask(LoginPage loginPage, LoginValidation loginValidation) {
-        this.loginPage = loginPage;
-        this.loginValidation = loginValidation;
+    public LoginTask() {
+        this.loginPage = new LoginPage();
+        this.loginValidation = new LoginValidation();
     }
 
     public void efetuarLoginBemSucedido(String usuario, String senha) {

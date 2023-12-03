@@ -1,5 +1,7 @@
 package framework.browser;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,13 +12,15 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+
 public class DriverManager {
     private static WebDriver driver;
+    private static final TipoBrowser tipoBrowserDefault = TipoBrowser.CHROME;
 
-    public static WebDriver obterDriver(TipoBrowser tipoBrowser) {
-        if (DriverManager.driver == null)
-            DriverManager.driver = DriverManager.montarDriver(tipoBrowser);
-
+    public static WebDriver obterDriver() {
+        if (DriverManager.driver == null) {
+            DriverManager.montarDriver();
+        }
         return DriverManager.driver;
     }
 
@@ -29,21 +33,29 @@ public class DriverManager {
         DriverManager.driver = null;
     }
 
-    private static WebDriver montarDriver(TipoBrowser tipoBrowser) {
-        switch (tipoBrowser) {
-            case CHROME:
-                return DriverManager.montarDriverChrome();
-            case FIREFOX:
-                return DriverManager.montarDriverFirefox();
-            case EDGE:
-                return DriverManager.montarDriverEdge();
-            case HEADLESS:
-            default:
-                return DriverManager.montarDriverHeadless();
-        }
+    public static void montarDriver() {
+        montarDriver(tipoBrowserDefault);
     }
 
-    private static ChromeDriver montarDriverChrome() {
+    public static void montarDriver(TipoBrowser tipoBrowser) {
+            switch (tipoBrowser) {
+                case CHROME:
+                    DriverManager.montarDriverChrome();
+                    break;
+                case FIREFOX:
+                    DriverManager.montarDriverFirefox();
+                    break;
+                case EDGE:
+                    DriverManager.montarDriverEdge();
+                    break;
+                case HEADLESS:
+                    DriverManager.montarDriverHeadless();
+                default:
+                    DriverManager.montarDriverHeadless();
+            }
+    }
+
+    private static void montarDriverChrome() {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions opcoes = new ChromeOptions()
@@ -51,10 +63,10 @@ public class DriverManager {
                 .addArguments("--incognito")
                 .addArguments("--remote-allow-origins=*");
 
-        return new ChromeDriver(opcoes);
+        DriverManager.driver = new ChromeDriver(opcoes);
     }
 
-    private static FirefoxDriver montarDriverFirefox() {
+    private static void montarDriverFirefox() {
         WebDriverManager.firefoxdriver().setup();
 
         FirefoxOptions opcoes = new FirefoxOptions()
@@ -62,10 +74,10 @@ public class DriverManager {
                 .addArguments("--incognito")
                 .addArguments("--remote-allow-origins=*");
 
-        return new FirefoxDriver(opcoes);
+        DriverManager.driver = new FirefoxDriver(opcoes);
     }
 
-    private static EdgeDriver montarDriverEdge() {
+    private static void montarDriverEdge() {
         WebDriverManager.edgedriver().setup();
 
         EdgeOptions opcoes = new EdgeOptions()
@@ -73,10 +85,10 @@ public class DriverManager {
                 .addArguments("--incognito")
                 .addArguments("--remote-allow-origins=*");
 
-        return new EdgeDriver(opcoes);
+        DriverManager.driver = new EdgeDriver(opcoes);
     }
 
-    private static ChromeDriver montarDriverHeadless() {
+    private static void montarDriverHeadless() {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions opcoes = new ChromeOptions()
@@ -84,6 +96,10 @@ public class DriverManager {
                 .addArguments("--window-size(1366,768)")
                 .addArguments("--remote-allow-origins=*");
 
-        return new ChromeDriver(opcoes);
+        DriverManager.driver = new ChromeDriver(opcoes);
+    }
+
+    public static byte[] obterScreenShot() {
+        return ((TakesScreenshot) DriverManager.driver).getScreenshotAs(OutputType.BYTES);
     }
 }
