@@ -45,16 +45,34 @@ O workspace contém a seguinte estrutura:
     - `java/validations` - Local complementar ao framework para automação de testes que possui as classes que representam as "assertions" (verificações de resultados)
 
 > [!NOTE]
-> - As pastas intermediárias `java` contidas em `main` e `test` tem propósito de centralizar os arquivos Java. Essa convenção ajuda na organização do código e é flexível para suportar outras linguagens (Gradle suporta ambientes multi-linguagem). Se houvessem também arquivos em uma linguagem diferente, como por exemplo Kotlin, também poderia haver uma pasta correspondente (ex.: `kotlin`)
+> As pastas intermediárias `java` contidas em `main` e `test` tem propósito de centralizar os arquivos Java. Essa convenção ajuda na organização do código e é flexível para suportar outras linguagens (Gradle suporta ambientes multi-linguagem). Se houvessem também arquivos em uma linguagem diferente, como por exemplo Kotlin, também poderia haver uma pasta correspondente (ex.: `kotlin`).
 
 ### Executando o projeto
 
-#### 1. Via terminal de comandos
+#### 1. Aplicação
 
-TODO
+##### 1.1 Via terminal de comandos
 
-1 - gradle --refresh-dependencies
+Atualizar (sincronizar) as dependências configuradas no projeto
+```shell
+gradle --refresh-dependencies
+```
 
-2 - ./gradlew app
+Executar o arquivo `gradlew` usando a task **app** 
+```shell
+./gradlew app
+```
 
-3 - ./gradlew test
+#### 2. Testes
+
+##### 2.1 Via terminal de comandos
+
+Atualizar (sincronizar) as dependências configuradas no projeto
+```shell
+gradle --refresh-dependencies
+```
+
+Executar o arquivo `gradlew` usando a task **test** 
+```shell
+./gradlew test
+```
