@@ -39,6 +39,9 @@ public class ReportBuilder {
     }
 
     public static void concluir() {
+        if (ReportBuilder.relatorio == null)
+            return;
+
         String diretorioRelatorio = ReportBuilder.DiretorioRelatorios
                 + File.separator + ReportBuilder.relatorio.getNome();
 
