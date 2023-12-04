@@ -60,9 +60,9 @@ Atualizar (sincronizar) as dependências configuradas no projeto
 gradle --refresh-dependencies
 ```
 
-Executar o arquivo `gradlew` usando a task **app** 
+Executar o arquivo `gradlew` usando a task **run** 
 ```shell
-./gradlew app
+./gradlew run
 ```
 
 #### 2. Testes

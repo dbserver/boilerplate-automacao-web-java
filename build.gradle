@@ -39,10 +39,6 @@ application {
     mainClassName = 'app.WebServer'
 }
 
-task app (dependsOn: 'run') { 
-    // The task that makes the application runnable (only the signature is needed)
-}
-
 tasks.withType(Test) {
     // Ensures that the "test" tasks utilize the required setup for JUnit 5
     useJUnitPlatform()
