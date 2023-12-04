@@ -12,10 +12,10 @@ import java.util.UUID;
 import framework.utils.FileOperations;
 
 public class ReportBuilder {
-    private static final String DiretorioTemplate = FileOperations.DiretorioResources
+    private static final String DiretorioTemplate = FileOperations.DiretorioResourcesAplicacao
             + File.separator + "simplereportbuilder"
             + File.separator + "template.html";
-    private static final String DiretorioRelatorios = FileOperations.DiretorioResources
+    private static final String DiretorioRelatorios = FileOperations.DiretorioResourcesTestes
             + File.separator + "relatorios";
     private static final String PlaceholderTitulo = "{title}";
     private static final String PlaceholderConteudo = "{report}";
@@ -85,7 +85,7 @@ public class ReportBuilder {
                     String diretorioImagem = processarImagemRegistroRelatorioHtml(diretorioRelatorio, registro);
 
                     conteudoRelatorioHtml
-                    		.append(String.format("<a href=\"%s\" target=\"_blank\">%n", diretorioImagem))
+                            .append(String.format("<a href=\"%s\" target=\"_blank\">%n", diretorioImagem))
                             .append(String.format("<img src=\"%s\" alt=\"%s\">%n",
                                     diretorioImagem,
                                     String.format("Evidência de %s", registro.getTipo().toString().toLowerCase())))

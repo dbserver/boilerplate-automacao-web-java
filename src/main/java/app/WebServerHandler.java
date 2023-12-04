@@ -12,8 +12,8 @@ import com.sun.net.httpserver.HttpHandler;
 
 import framework.utils.FileOperations;
 
-public class WebAppHandler implements HttpHandler {
-    private static final String DiretorioResourcesApp = FileOperations.DiretorioResources
+public class WebServerHandler implements HttpHandler {
+    private static final String DiretorioResourcesApp = FileOperations.DiretorioResourcesAplicacao
             + File.separator + "app";
 
     @Override

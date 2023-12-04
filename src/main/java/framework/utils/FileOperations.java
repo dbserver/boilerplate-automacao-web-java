@@ -6,23 +6,27 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class FileOperations {
-    private static final String DiretorioBase = System.getProperty("user.dir")
+    private static final String DiretorioBaseAplicacao = System.getProperty("user.dir")
             + File.separator + "src"
             + File.separator + "main";
 
-    public static final String DiretorioMain = FileOperations.DiretorioBase
-            + File.separator + "java";
+    private static final String DiretorioBaseTestes = System.getProperty("user.dir")
+            + File.separator + "src"
+            + File.separator + "test";
 
-    public static final String DiretorioResources = FileOperations.DiretorioBase
+    public static final String DiretorioResourcesAplicacao = FileOperations.DiretorioBaseAplicacao
             + File.separator + "resources";
 
-    public static Properties getProperties(String nomeArquivo) {
+    public static final String DiretorioResourcesTestes = FileOperations.DiretorioBaseTestes
+            + File.separator + "resources";
+
+    private static Properties getProperties(String diretorioResources, String nomeArquivo) {
         Properties properties = new Properties();
 
-        String diretorioArquivoProperties = FileOperations.DiretorioResources
+        String diretorioArquivoProperties = diretorioResources
                 + File.separator + "properties"
                 + File.separator + String.format("%s.properties", nomeArquivo);
-        System.out.println(diretorioArquivoProperties);
+
         try (FileReader leitor = new FileReader(diretorioArquivoProperties)) {
             properties.load(leitor);
         } catch (IOException e) {
@@ -32,6 +36,14 @@ public class FileOperations {
         }
 
         return properties;
+    }
+
+    public static Properties getPropertiesAplicacao(String nomeArquivo) {
+        return getProperties(FileOperations.DiretorioResourcesAplicacao, nomeArquivo);
+    }
+
+    public static Properties getPropertiesTestes(String nomeArquivo) {
+        return getProperties(FileOperations.DiretorioResourcesTestes, nomeArquivo);
     }
 
     public static void criarPasta(String nomeDiretorio) {

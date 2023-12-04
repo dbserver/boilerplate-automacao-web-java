@@ -13,7 +13,6 @@ import framework.utils.simplereportbuilder.TipoRegistro;
 
 import tasks.LoginTask;
 
-
 public class RealizarLoginTestCase extends TestBase {
     private final LoginTask loginTask;
 
@@ -26,7 +25,7 @@ public class RealizarLoginTestCase extends TestBase {
         try {
             ReportBuilder.criar("Login-sucesso", "Realizar login bem sucedido com credenciais válidas");
 
-            Properties contasProps = FileOperations.getProperties("contas_config");
+            Properties contasProps = FileOperations.getPropertiesTestes("contas_config");
             String usuario = contasProps.getProperty("conta1_usuario");
             String senha = contasProps.getProperty("conta1_senha");
 
@@ -46,7 +45,7 @@ public class RealizarLoginTestCase extends TestBase {
         try {
             ReportBuilder.criar("Login-insucesso", "Impedir realização de login com credenciais inválidas");
 
-            Properties contasProps = FileOperations.getProperties("contas_config");
+            Properties contasProps = FileOperations.getPropertiesTestes("contas_config");
             String usuario = contasProps.getProperty("conta3_usuario");
             String senha = contasProps.getProperty("conta3_senha");
 
