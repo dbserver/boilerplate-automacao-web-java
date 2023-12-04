@@ -14,12 +14,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverManager {
     private static WebDriver driver;
-    private static final TipoBrowser tipoBrowserDefault = TipoBrowser.CHROME;
+    private static final TipoBrowser TipoBrowserDefault = TipoBrowser.CHROME;
 
     public static WebDriver obterDriver() {
         if (DriverManager.driver == null) {
             DriverManager.montarDriver();
         }
+
         return DriverManager.driver;
     }
 
@@ -33,7 +34,7 @@ public class DriverManager {
     }
 
     public static void montarDriver() {
-        montarDriver(tipoBrowserDefault);
+        montarDriver(TipoBrowserDefault);
     }
 
     public static void montarDriver(TipoBrowser tipoBrowser) {
@@ -51,6 +52,10 @@ public class DriverManager {
             default:
                 DriverManager.montarDriverHeadless();
         }
+    }
+
+    public static byte[] obterScreenShot() {
+        return ((TakesScreenshot) DriverManager.driver).getScreenshotAs(OutputType.BYTES);
     }
 
     private static void montarDriverChrome() {
@@ -95,9 +100,5 @@ public class DriverManager {
                 .addArguments("--remote-allow-origins=*");
 
         DriverManager.driver = new ChromeDriver(opcoes);
-    }
-
-    public static byte[] obterScreenShot() {
-        return ((TakesScreenshot) DriverManager.driver).getScreenshotAs(OutputType.BYTES);
     }
 }
