@@ -7,10 +7,9 @@ import framework.browser.DriverManager;
 import framework.utils.FileOperations;
 import framework.utils.simplereportbuilder.ReportBuilder;
 
-
 public class TestBase {
     private static final String UrlWebsiteAlvo = FileOperations
-            .getProperties("website_config")
+            .getPropertiesTestes("website_config")
             .getProperty("url");
 
     @BeforeEach

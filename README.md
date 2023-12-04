@@ -25,11 +25,12 @@ O workspace contém a seguinte estrutura:
     │   │   └── framework
     │   └── resources
     └── test
-        └── java
-            ├── pageobjects
-            ├── tasks
-            ├── testcases
-            └── validations
+        ├── java
+        │   ├── pageobjects
+        │   ├── tasks
+        │   ├── testcases
+        │   └── validations
+        └── resources
 ```
 
 - `gradle` - Local da distribuição Gradle em utilização no projeto (Gradle Wrapper)
@@ -37,12 +38,13 @@ O workspace contém a seguinte estrutura:
   - `main` - Local que centraliza a parte da codebase a ser executada em formato de aplicação convencional (Java ou outras)
     - `java/app` - Local do web server que provê uma aplicação web de exemplo (cujos arquivos HTML, JavaScript e CSS estão em `src/main/resources/app`)
     - `java/framework` - Local da parte base do framework para automação de testes
-    - `resources` - Local de arquivos utilitários (ex.: arquivos da aplicação web de exemplo, arquivos de dados, output padrão de relatórios de execução de testes)
+    - `resources` - Local de arquivos utilitários (ex.: arquivos da aplicação web de exemplo, arquivos de dados)
   - `test` - Local que centraliza a parte da codebase a ser executada em formato de testes (Java ou outras, via frameworks como por exemplo JUnit)
     - `java/pageobjects` - Local complementar ao framework para automação de testes que possui as classes que representam as páginas da aplicação web alvo (ex.: aplicação provida pelo web server em `src/main/java/app`)
     - `java/tasks` - Local complementar ao framework para automação de testes que possui as classes que representam as ações de alto nível a serem efetuadas nas páginas da aplicação web alvo via `pageobjects`
     - `java/testcases` - Local complementar ao framework para automação de testes que possui as classes que representam os casos de teste de fato, através do uso em conjunto de `pageobjects`, `tasks` e `validations`
     - `java/validations` - Local complementar ao framework para automação de testes que possui as classes que representam as "assertions" (verificações de resultados)
+    - `resources` - Local de arquivos utilitários para os testes (ex.: arquivos de dados, output padrão de relatórios de execução de testes)
 
 > [!NOTE]
 > As pastas intermediárias `java` contidas em `main` e `test` tem propósito de centralizar os arquivos Java. Essa convenção ajuda na organização do código e é flexível para suportar outras linguagens (Gradle suporta ambientes multi-linguagem). Se houvessem também arquivos em uma linguagem diferente, como por exemplo Kotlin, também poderia haver uma pasta correspondente (ex.: `kotlin`).

@@ -12,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
 public class DriverManager {
     private static WebDriver driver;
     private static final TipoBrowser tipoBrowserDefault = TipoBrowser.CHROME;
@@ -38,21 +37,20 @@ public class DriverManager {
     }
 
     public static void montarDriver(TipoBrowser tipoBrowser) {
-            switch (tipoBrowser) {
-                case CHROME:
-                    DriverManager.montarDriverChrome();
-                    break;
-                case FIREFOX:
-                    DriverManager.montarDriverFirefox();
-                    break;
-                case EDGE:
-                    DriverManager.montarDriverEdge();
-                    break;
-                case HEADLESS:
-                    DriverManager.montarDriverHeadless();
-                default:
-                    DriverManager.montarDriverHeadless();
-            }
+        switch (tipoBrowser) {
+            case CHROME:
+                DriverManager.montarDriverChrome();
+                break;
+            case FIREFOX:
+                DriverManager.montarDriverFirefox();
+                break;
+            case EDGE:
+                DriverManager.montarDriverEdge();
+                break;
+            case HEADLESS:
+            default:
+                DriverManager.montarDriverHeadless();
+        }
     }
 
     private static void montarDriverChrome() {

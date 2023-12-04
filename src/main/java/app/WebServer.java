@@ -9,7 +9,7 @@ import framework.utils.FileOperations;
 
 public class WebServer {
     public static final int Porta = Integer.parseInt(
-            FileOperations.getProperties("website_config").getProperty("porta"));
+            FileOperations.getPropertiesAplicacao("app_config").getProperty("porta"));
 
     public static void main(String[] args) {
         try {
