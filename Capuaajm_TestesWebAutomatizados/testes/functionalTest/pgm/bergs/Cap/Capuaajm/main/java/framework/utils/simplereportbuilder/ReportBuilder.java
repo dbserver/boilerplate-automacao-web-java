@@ -11,7 +11,6 @@ import java.util.UUID;
 
 import bergs.Cap.Capuaajm.main.java.framework.utils.FileOperations;
 
-
 public class ReportBuilder {
     private static final String DiretorioTemplate = FileOperations.DiretorioResourcesAplicacao
             + File.separator + "simplereportbuilder"
@@ -40,6 +39,9 @@ public class ReportBuilder {
     }
 
     public static void concluir() {
+        if (ReportBuilder.relatorio == null)
+            return;
+
         String diretorioRelatorio = ReportBuilder.DiretorioRelatorios
                 + File.separator + ReportBuilder.relatorio.getNome();
 
