@@ -46,7 +46,7 @@ O workspace contém a seguinte estrutura:
 - `Capuaajm_TestesWebAutomatizados` - Local dos arquivos de código fonte da codebase
   - `relatorios_testes` - Local dos relatórios de execução de testes automaticamente gerados pela estrutura
   - `testes/functionalTest/pgm/bergs/Cap/Capuaajm/main` - Local que centraliza a parte da codebase a ser executada em formato de aplicação convencional (Java ou outras)
-    - `java/app` - Local do web server que provê uma aplicação web de exemplo (cujos arquivos HTML, JavaScript e CSS estão em `src/main/resources/app`)
+    - `java/app` - Local do web server que provê uma aplicação web de exemplo (cujos arquivos HTML, JavaScript e CSS estão em `main/resources/app`)
     - `java/framework` - Local da parte base do framework para automação de testes
     - `resources` - Local de arquivos utilitários (ex.: arquivos da aplicação web de exemplo, arquivos de dados, arquivos de propriedades para a aplicação)
   - `testes/functionalTest/pgm/bergs/Cap/Capuaajm/test` - Local que centraliza a parte da codebase a ser executada em formato de testes (Java ou outras, via frameworks como por exemplo JUnit)
