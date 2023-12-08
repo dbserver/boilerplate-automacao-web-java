@@ -57,7 +57,7 @@ O workspace contém a seguinte estrutura:
     - `resources` - Local de arquivos utilitários para os testes (ex.: arquivos de dados, output padrão de relatórios de execução de testes, arquivos de propriedades para os testes)
 
 > [!NOTE]
-> * Capkcfjm e Capuaajm são acrônimos para um conjunto de nomenclaturas de projetos, times e setores do Banrisul. O `Cap` contido nas palavras, por exemplo, refere-se a "Capacitação"
+> * `Capkcfjm` e `Capuaajm` são acrônimos para um conjunto de nomenclaturas de projetos, times e setores do Banrisul. O `Cap` contido nas palavras, por exemplo, refere-se a "Capacitação"
 > * A estrutura intermediária `testes/functionalTest/pgm/bergs/Cap/Capuaajm` representa alguns acrônimos da organização hierarquicamene. Não há impacto prático envolvido
 > * As pastas intermediárias `java` contidas em `main` e `test` tem propósito de centralizar os arquivos Java. Essa convenção ajuda na organização do código e é flexível para suportar outras linguagens (Gradle suporta ambientes multi-linguagem). Se houvessem também arquivos em uma linguagem diferente, como por exemplo Kotlin, também poderia haver uma pasta correspondente (ex.: `kotlin`)
 
