@@ -9,7 +9,6 @@ O boilerplate Java para automação de testes de aplicações web contém um con
 ### Pré-requisitos
 
 - [Java SE Development Kit 11](https://www.oracle.com/br/java/technologies/downloads/#java11) ou superior
-- [Gradle 6.8](https://docs.gradle.org/6.8/userguide/installation.html#installing_with_a_package_manager) ou superior (se superior, demanda atualização do Gradle Wrapper)
 
 ### Workspace
 
@@ -55,12 +54,12 @@ O workspace contém a seguinte estrutura:
 
 ##### 1.1 Via terminal de comandos
 
-Atualizar (sincronizar) as dependências configuradas no projeto
+Executar o arquivo `gradlew` (Gradle Wrapper) para atualizar (sincronizar) as dependências configuradas no projeto
 ```shell
-gradle --refresh-dependencies
+./gradlew --refresh-dependencies
 ```
 
-Executar o arquivo `gradlew` usando a task **run** 
+Executar o arquivo `gradlew` (Gradle Wrapper) usando a task **run** 
 ```shell
 ./gradlew run
 ```
@@ -69,12 +68,12 @@ Executar o arquivo `gradlew` usando a task **run**
 
 ##### 2.1 Via terminal de comandos
 
-Atualizar (sincronizar) as dependências configuradas no projeto
+Executar o arquivo `gradlew` (Gradle Wrapper) para atualizar (sincronizar) as dependências configuradas no projeto
 ```shell
-gradle --refresh-dependencies
+./gradlew --refresh-dependencies
 ```
 
-Executar o arquivo `gradlew` usando a task **test** 
+Executar o arquivo `gradlew` (Gradle Wrapper) usando a task **test** 
 ```shell
 ./gradlew test
 ```
