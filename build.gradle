@@ -7,46 +7,46 @@
  */
 
 plugins {
-    // Use application plugin to make it possible to run the "main" portion of the project
+    // Using "application" plugin to make it possible to run the "main" project piece
     id 'application'
 }
 
 repositories {
-    // Use JCenter for resolving dependencies
+    // Using JCenter for resolving dependencies
     jcenter()
 }
 
 dependencies {
-    // Use Apache Math for extra mathematical utilities
+    // Using Apache Math for extra mathematical utilities
     implementation 'org.apache.commons:commons-math3:3.6.1'
     
-    // Use Guava for extra Java utilities
+    // Using Guava for extra Java utilities
     implementation 'com.google.guava:guava:29.0-jre'
     
-    // Use JUnit test framework
+    // Using JUnit test framework
     implementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
     
-    // Use WebDriverManager for browser simplified management
+    // Using WebDriverManager for browser simplified management
     implementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
     
-    // Use Selenium for web browser automations
+    // Using Selenium for web browser automations
     implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
 }
 
 application {
-    // Set the application entrypoint
+    // Setting up the application entry point
     mainClassName = 'app.WebServer'
 }
 
 tasks.withType(Test) {
-    // Ensures that the "test" tasks utilize the required setup for JUnit 5
+    // Ensuring that "test" tasks utilise the required setup for JUnit 5
     useJUnitPlatform()
 
-    // Sets up logging information for "test" tasks
+    // Setting up logging information for "test" tasks
     testLogging {
-        exceptionFormat("full")
-        events("started", "skipped", "passed", "failed")
+        exceptionFormat 'full'
+        events 'started', 'skipped', 'passed', 'failed'
         showStandardStreams = false
     }
 }
